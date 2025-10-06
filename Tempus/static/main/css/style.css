@@ -693,6 +693,16 @@ body.no-scroll {
 
 .swiper-button-prev,
 .swiper-button-next{
+  user-select: none;            /* стандарт */
+  -webkit-user-select: none;    /* Safari/Chrome */
+  -moz-user-select: none;       /* Firefox */
+  -ms-user-select: none;        /* IE/Edge старые */
+
+  -webkit-user-drag: none;      /* предотвращает drag в WebKit (iOS/Chrome) */
+  -khtml-user-drag: none;
+
+  -webkit-touch-callout: none;  /* отключает контекстное меню на iOS при долгом нажатии */
+  outline: none;
   width: 40px !important;
   height: 40px !important;
   font-weight: 100;
