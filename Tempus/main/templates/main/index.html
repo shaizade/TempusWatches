@@ -1,0 +1,197 @@
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tempus Watches</title>
+    <!-- styles \/ -->
+    <link rel="stylesheet" href="{% static 'main/css/style.css' %}">
+    <!-- bootstrap icons \/ -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <!-- AOS animation \/ -->
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <!-- Swiper \/ -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/11.0.5/swiper-bundle.min.css" />
+</head>
+<body>
+
+    <div class="overlay" id="overlay"></div>
+
+    <div class="header-search" id="headerSearch">
+        <i class="bi bi-arrow-left back-arrow" style="font-size: 20px; cursor: pointer;" id="backArrowSearch"></i>
+        <h2 class="search-title">find what you've been looking for</h2>
+        <div class="search-block">
+            <input type="text" placeholder="search..." class="search-input">
+            <i class="bi bi-search" style="font-size: 16px; color: #06520D;"></i>
+        </div>
+    </div>
+
+    <div class="header-heart" id="headerHeart">
+        <i class="bi bi-arrow-left back-arrow" style="font-size: 20px; cursor: pointer;" id="backArrowHeart"></i>
+        <h2 class="heart-title">my choice</h2>
+        <p class="heart-text">Number of models in the "Favorites" section: 0 items.</p>
+    </div>
+
+    <div class="header-login" id="headerLogin">
+        <i class="bi bi-arrow-left back-arrow" style="font-size: 20px; cursor: pointer;" id="backArrowLogin"></i>
+        <h2 class="login-title">My tempus</h2>
+        <p class="login-text">login</p>
+        <form class="login-form">
+            <div class="form-group">
+                <!-- <label for="email">E-mail</label> -->
+                <input type="email" class="login-input" placeholder="Email" required/>
+            </div>
+            <div class="form-group">
+                <!-- <label for="email">Password</label> -->
+                <input type="email" class="login-input" placeholder="Password" required/>
+                <a href="/" class="forget-password">forget the password?</a>
+            </div>
+            <!-- <div class="form-group">
+                <input type="email" class="login-input" placeholder="Repeat password" required/>
+            </div> -->
+            <button class="form-btn">login</button>
+            <a href="/" class="have-account">have an account?</a>
+        </form>
+    </div>
+
+    <header class="header">
+
+        <div class="video-bg">
+            <video autoplay muted loop playsinline>
+                <source src="{% static 'main/video/Diver300M_16x9_desktop-opt.mp4' %}" type="video/mp4">
+            </video>
+      </div>
+
+        <div class="header-nav container">
+            <div class="header-wrapper">
+                <div class="left-header">
+                    <a href="/">find boutique</a>
+                    <a href="/">contact us</a>
+                </div>
+                <div class="center-header">
+                    <h2 class="header-logo">tempus</h2>
+                </div>
+                <div class="right-header">
+                    <i class="bi bi-search" id="searchBtn" style="font-size: 18px;"></i>
+                    <i class="bi bi-heart" id="heartBtn" style="font-size: 20px;"></i>
+                    <i class="bi bi-person" id="loginBtn" style="font-size: 23px;"></i>
+                </div>
+            </div>
+
+            <div class="header-navigation">
+                <a href="" class="header-link">watch</a>
+                <a href="" class="header-link">accessories</a>
+                <a href="" class="header-link">present</a>
+                <a href="" class="header-link">services</a>
+                <a href="" class="header-link">world of tempus</a>
+            </div>
+        </div>
+        <div class="header-content container">
+            <h2>tempus - beyond time world</h2>
+            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Consectetur, nisi dolor? Nemo!</p>
+            <a href="/" class="content-btn">more</a>
+        </div>
+    </header>
+
+    <main>
+        <section class="new-collection container">
+            <h2 class="new-title">New Collection</h2>
+            <p class="new-text">Tissot Ballade 39mm</p>
+            <div class="new-collection-wrapper">
+                <img src="{% static 'main/img/new-collection.webp' %}" alt="" class="new-collection-img" data-aos="fade-right" data-aos-duration="1100">
+                <div class="new-collection-description" data-aos="fade-left" data-aos-duration="1100">
+                    <h3>Tissot Ballade</h3>
+                    <p>
+                        The Ballade COSC is an evolution of a model with deep roots in the Tissot collection — reintroduced in 2024 and now elevated with chronometer-certified performance. At its core is the Powermatic 80 movement, officially recognized for its accuracy and reliability. Its fluted bezel defines the watch’s identity, with finely cut ridges that add depth and character to the case. The Ballade COSC combines certified performance with sharp visual detailing — a watch that carries its precision with presence.
+                    </p>
+                    <a href="/" class="new-collection-btn">Learn more about the collection</a>
+                </div>
+            </div>
+        </section>
+        <section class="popular">
+            <h2 class="popular-title">The Most Popular Watches</h2>
+            <div class="popular-swiper">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                        <img src="{% static 'main/img/popular hublot.webp' %}" alt="">
+                        <h2 class="slide-title">Patek Philippe</h2>
+                        <p class="slide-price">$496,260</p>
+                        <a href="/" class="slide-btn">more</a>
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="{% static 'main/img/popular patek.webp' %}" alt="">
+                        <h2 class="slide-title">Patek Philippe</h2>
+                        <p class="slide-price">$496,260</p>
+                        <a href="/" class="slide-btn">more</a>
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="{% static 'main/img/popular rolex.webp' %}" alt="">
+                        <h2 class="slide-title">Patek Philippe</h2>
+                        <p class="slide-price">$496,260</p>
+                        <a href="/" class="slide-btn">more</a>
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="{% static 'main/img/popular hublot.webp' %}" alt="">
+                        <h2 class="slide-title">Patek Philippe</h2>
+                        <p class="slide-price">$496,260</p>
+                        <a href="/" class="slide-btn">more</a>
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="{% static 'main/img/popular patek.webp' %}" alt="">
+                        <h2 class="slide-title">Patek Philippe</h2>
+                        <p class="slide-price">$496,260</p>
+                        <a href="/" class="slide-btn">more</a>
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="{% static 'main/img/popular rolex.webp' %}" alt="">
+                        <h2 class="slide-title">Patek Philippe</h2>
+                        <p class="slide-price">$496,260</p>
+                        <a href="/" class="slide-btn">more</a>
+                    </div>
+                </div>
+
+                <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev"></div>
+            </div>
+        </section>
+
+        <section class="green">
+            <div class="container green-wrapper">
+                <div class="green-info">
+                    <h2 class="green-title">our collection</h2>
+                    <p class="green-text">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Unde labore voluptates veniam ullam nisi omnis illum ex aliquid soluta accusantium!</p>
+                    <a href="/" class="green-btn">discover our collection</a>
+                </div>
+                <img src="{% static 'main/img/green watch.webp' %}" class="green-img" alt="">
+            </div>
+        </section>
+    </main>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/11.0.5/swiper-bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+    // noinspection JSUnresolvedVariable
+    AOS.init();
+    </script>
+    <script src="{% static 'main/scripts/main.js' %}"></script>
+
+    <div class="footer-line">
+      <div class="footer-left">
+        <button class="about-project-btn">Подробнее о проекте</button>
+      </div>
+
+      <div class="footer-center">
+        <div class="footer-authors">
+          <div class="author-block">HTML/CSS/JS: Надир</div>
+          <div class="author-block">Graphic Design: Ибрагим, Артём, Ильмурат</div>
+          <div class="author-block">Django: Алижан</div>
+        </div>
+        <div class="footer-bottom">
+          <p>© 2025 Tempus Watches</p>
+        </div>
+      </div>
+    </div>
+
+</body>
+</html>
