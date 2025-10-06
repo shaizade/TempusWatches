@@ -84,6 +84,3 @@ overlay.addEventListener('click', () => {
   overlay.classList.remove('activeOverlay');
   document.body.classList.remove('no-scroll');
 });
-
-
-
