@@ -1,0 +1,221 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Личный кабинет | Tempus Watches</title>
+    <link rel="stylesheet" href="{% static 'main/css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'main/css/account.css' %}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/11.0.5/swiper-bundle.min.css" />
+</head>
+<body>
+
+    <div class="overlay" id="overlay"></div>
+
+    <div class="header-search" id="headerSearch">
+        <i class="bi bi-arrow-left back-arrow" style="font-size: 20px; cursor: pointer;" id="backArrowSearch"></i>
+        <h2 class="search-title">find what you've been looking for</h2>
+        <div class="search-block">
+            <input type="text" placeholder="Искать..." class="search-input">
+            <i class="bi bi-search" style="font-size: 16px; color: #032d07ff;"></i>
+        </div>
+    </div>
+
+    <header class="account-header">
+        <div class="header-nav container">
+            <div class="header-wrapper">
+                <div class="left-header">
+                    <a href="/">find boutique</a>
+                    <a href="/">contact us</a>
+                </div>
+                <div class="center-header">
+                    <h2 class="header-logo" id="homeLogo">tempus</h2>
+                </div>
+                <div class="right-header">
+                    <i class="ow_i ow_i--24 ow_i--lang" aria-hidden="true"></i>
+                    <i class="bi bi-search" id="searchBtn" style="font-size: 18px;"></i>
+
+                    <a href="{% url 'account' %}" class="bi bi-person-fill account-icon-hidden" id="accountBtn" style="font-size: 23px; text-decoration: none;"></a>
+                </div>
+            </div>
+
+            <div class="header-navigation">
+                <a href="" class="header-link">watch</a>
+                <a href="" class="header-link">accessories</a>
+                <a href="" class="header-link">present</a>
+                <a href="" class="header-link">services</a>
+                <a href="" class="header-link">world of tempus</a>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section class="account-page-section">
+            <div class="container account-page-wrapper">
+
+                <nav class="account-menu">
+                    <h2 style="font-size: 24px; color: #333; margin-bottom: 15px;">Мой аккаунт</h2>
+                    <a href="#" class="account-menu-link active" data-section="profile"><i class="bi bi-person-circle"></i> Профиль</a>
+                    <a href="#" class="account-menu-link" data-section="orders"><i class="bi bi-box-seam"></i> Мои заказы</a>
+                    <a href="#" class="account-menu-link" data-section="wishlist"><i class="bi bi-heart-fill"></i>Список желаний</a>
+                    <a href="#" class="account-menu-link" data-section="cards"><i class="bi bi-credit-card"></i> Банковские карты</a>
+                    <a href="#" class="account-menu-link" data-section="notifications"><i class="bi bi-bell"></i> Уведомления</a>
+                    <button class="account-menu-link" id="logoutBtnPage"><i class="bi bi-box-arrow-right"></i> Выйти из аккаунта</button>
+                </nav>
+
+                <div class="account-content">
+                    <!-- ПРОФИЛЬ -->
+                    <div class="content-section active" id="profile-section">
+                        <h1>Профиль и настройки</h1>
+                        <p>Здесь вы можете изменить свои личные данные, пароль и адреса доставки.</p>
+
+                        <div class="account-section">
+                            <h3>Ваши данные:</h3>
+                            <div class="user-info" id="userInfoView">
+                                <!-- Режим просмотра -->
+                                <p><strong>Имя и фамилия:</strong> <span id="displayFullName">{{ user.first_name }} {{ user.last_name }}</span></p>
+                                <p><strong>Email:</strong> <span id="displayEmail">{{ user.email }}</span></p>
+                                <p><strong>Телефон:</strong> <span id="displayPhone">{{ user.phone }}</span></p>
+                            </div>
+
+                            <div class="user-edit" id="userInfoEdit" style="display: none;">
+                                <!-- Режим редактирования -->
+                                <div class="form-group">
+                                    <label for="fullName">Имя и фамилия</label>
+                                    <input type="text" class="login-input" id="fullName" value="{{ user.first_name }} {{ user.last_name }}" readonly>
+                                    <div class="field-note2">Для изменения имени обратитесь в техподдержку</div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="email">Электронная почта</label>
+                                    <input type="email" class="login-input" id="email" value="{{ user.email }}">
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="phone">Номер телефона</label>
+                                    <input type="tel" class="login-input" id="phone" value="{{ user.phone }}">
+                                </div>
+                            </div>
+
+                            <div class="section-action-footer">
+                                <button id="editProfileBtn" class="primary-action-btn">Изменить данные</button>
+                                <div class="edit-actions" id="editActions" style="display: none;">
+                                    <button id="saveProfileBtn" class="primary-action-btn">Сохранить</button>
+                                    <button id="cancelEditBtn" class="primary-action-btn">Отмена</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- БАНКОВСКИЕ КАРТЫ -->
+                    <div class="content-section" id="cards-section">
+                        <h1>Банковские карты</h1>
+                        <p>Управление вашими привязанными банковскими картами для быстрой оплаты.</p>
+
+                        <div class="cards-container">
+                            <button class="add-card-btn" id="addCardBtn">
+                                <i class="bi bi-plus-circle"></i>
+                                <span>Добавить новую карту</span>
+                            </button>
+                        </div>
+
+                        <div class="add-card-form" id="addCardForm" style="display: none;">
+                            <h4>Добавить новую карту</h4>
+                            <form id="newCardForm">
+                                <div class="form-group">
+                                    <label for="cardNumber">Номер карты</label>
+                                    <input type="text" id="cardNumber" placeholder="1234 5678 9012 3456" maxlength="19">
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label for="cardExpiry">Срок действия</label>
+                                        <input type="text" id="cardExpiry" placeholder="ММ/ГГ" maxlength="5">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="cardCVC">CVC</label>
+                                        <input type="text" id="cardCVC" placeholder="123" maxlength="3">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="cardHolder">Имя владельца</label>
+                                    <input type="text" id="cardHolder" placeholder="ELIJAH SHAIZADE">
+                                </div>
+                                <div class="form-actions">
+                                    <button type="button" class="cancel-btn" id="cancelAddCard">Отмена</button>
+                                    <button type="submit" class="save-btn">Сохранить карту</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+
+                    <!-- МОИ ЗАКАЗЫ -->
+                    <div class="content-section" id="orders-section">
+                        <h1>Мои заказы</h1>
+                        <p>Здесь будут отображаться ваши предыдущие заказы.</p>
+                    </div>
+
+                    <!-- СПИСОК ЖЕЛАНИЙ -->
+                    <div class="content-section" id="wishlist-section">
+                        <h1>Список желаний</h1>
+                        <p>Здесь будут отображаться товары, которые вы добавили в избранное.</p>
+                    </div>
+
+                    <!-- УВЕДОМЛЕНИЯ -->
+                    <div class="content-section" id="notifications-section">
+                        <h1>Уведомления</h1>
+                        <p>Здесь будут отображаться ваши уведомления и настройки рассылки.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container footer-wrapper">
+
+            <a class="footer-btn" href="https://github.com/shaizade/TempusWatches">Подробнее</a>
+
+            <div class="footer-info">
+                <div class="footer-flex">
+                    <p class="footer-link">HTML/CSS/JS:Надир</p>
+                    <p class="footer-link">Graphic Design: Ибрагим, Артем, Ильмурат</p>
+                    <p class="footer-link">Django: Алижан</p>
+                </div>
+                <p class="footer-logo">&#169; Tempus Watches</p>
+            </div>
+
+            <div class="language-switcher" id="languageSwitcher">
+                <button class="lang-toggle-btn" id="langToggleBtn" aria-expanded="false" aria-controls="langDropdown">
+                    <i class="bi bi-globe" style="font-size: 20px;"></i>
+                </button>
+                <div class="lang-dropdown" id="langDropdown">
+                    <a href="#" class="lang-item" data-lang="ru">Русский</a>
+                    <a href="#" class="lang-item" data-lang="en">English</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/11.0.5/swiper-bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script src="{% static 'main/js/account.js' %}"></script>
+
+<!-- Модальное окно подтверждения выхода -->
+<div class="logout-modal" id="logoutModal">
+    <div class="logout-modal-content">
+        <div class="logout-modal-icon">
+            <i class="bi bi-box-arrow-right"></i>
+        </div>
+        <h3 class="logout-modal-title">Выход из аккаунта</h3>
+        <p class="logout-modal-message">Вы уверены, что хотите выйти из своего аккаунта?</p>
+        <div class="logout-modal-actions">
+            <button class="logout-modal-btn logout-modal-cancel" id="logoutCancelBtn">Отмена</button>
+            <button class="logout-modal-btn logout-modal-confirm" id="logoutConfirmBtn">Выйти</button>
+        </div>
+    </div>
+</div>
+</body>
+</html>
